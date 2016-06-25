@@ -1,36 +1,38 @@
 import javax.swing.*;  
-import java.awt.event.*;  
+import java.awt.*;  
+import java.awt.event.*;
 
-
-public class CodeLesson
+public class CodeLesson extends JFrame	
 {
-	public CodeLesson()
+	int width, height; 
+	JPanel panel;
+    JLabel label;
+	JButton next, back, menu;
+	int lessonNow; 
+	Lesson lessonContent[] = {}; // more like for storage, like struct
+	
+	public CodeLesson(int x, int y, String str)
 	{
-		int X = 1000;
-		int Y = 800;
-		JFrame f=new JFrame();//creating instance of JFrame  
-        
-		JButton b=new JButton("Start");//creating instance of JButton  
-		b.setBounds(X/2,(int)(Y/1.5),100, 40);//x axis, y axis, width, height  
-		          
-		f.add(b);//adding button in JFrame  
-		          
-		f.setSize(X,Y);//800 width and 1000 height  
-		f.setLayout(null);//using no layout managers  
-		f.setVisible(true);//making the frame visible  
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-
+		super(str); 
+		width = x; 
+		height = y;
+		setSize(width, height); 
+		flow = new FlowLayout(FlowLayout.CENTER);
+		setLayout(flow); 
+		next = new JButton("Next"); 
+		back = new JButton("Back"); 
+		menu = new JButton("Menu");
+		setVisible( true );
+		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
+	
 	public static void main(String[] args) 
 	{  
 		
-		CodeLesson c = new CodeLesson();
+		CodeLesson c = new CodeLesson(500, 300, "Hello World");
 		
 		
 		
     }  
-
-	
-
 }
 
