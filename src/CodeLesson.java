@@ -104,15 +104,14 @@ public class CodeLesson extends JFrame
 	/*void setHome(){
 		
 	}*/
-	public static void main(String[] args) 
+	public static void main(String[] args) tr
 	{  
 		// Lesson(String h, String main, String code, ImageIcon img[]); 
 		ImageIcon homeImag[] = new ImageIcon[1];
-		BufferedImage myPic = new ImageIO.read(new File("zmascot.png"));
-		homeImag[0] = new ImageIcon(myPicture);
+		BufferedImage myPic = ImageIO.read(new File("zmascot.png"));
+		homeImag[0] = new ImageIcon(myPic);
 		Lesson homeview = new Lesson("Coding for Girls (CG)", "Let's start a new adventure", "", homeImag, homeImag.length); 
 		CodeLesson c = new CodeLesson(500, 500, "Hello World", 20, homeview);
 		
     }  
 }
-

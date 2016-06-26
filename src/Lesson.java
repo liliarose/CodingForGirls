@@ -3,12 +3,13 @@ import javax.swing.ImageIcon;
  
 public class Lesson{
 	
-	String lessonText;
-	String codeSignal; 
+	String lessonText, codeSignal, header; 
 	ImageIcon imageList[]; // if we add images, we can insert a special code to show where to add it & add the images in order
-	Lesson(String str, ImageIcon img[]){
-		lessonText = str; 
-		for(int i = 0; i < img.length; i++){
+	Lesson(String h, String main, String code, ImageIcon img[], int len){
+		lessonText = main;
+		codeSignal = code; 
+		header = h;
+		for(int i = 0; i < len; i++){
 			imageList[i] = img[i];
 		}		
 	}
