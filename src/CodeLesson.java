@@ -1,11 +1,16 @@
 import javax.swing.*;  
-import java.awt.*;  
+import java.awt.*;
+import java.awt.Graphics.*;
 import java.awt.event.*;
-import java.awt.font.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.*;
+import javax.swing.*;
+import javax.swing.JFrame;
 
 public class CodeLesson extends JFrame	
 {
-	int width, height; 
+	int width, height, lessonMAX, hasLessonNum = 0; 
 	
 	//font & colors
 	Color brightPink = new Color(233,78,119);
@@ -27,16 +32,19 @@ public class CodeLesson extends JFrame
 	JButton next = new JButton("Next"); 
 	JButton back = new JButton("Back"); 
 	JButton menu = new JButton("Menu");
-	
+
 	//current page 
 	int lessonNow; 
 	
-	//lesson 
+	//lesson & Home Page
+	Lesson HomePage; 
 	Lesson lessonContent[]; // more like for storage, like struct
 	
-	public CodeLesson(int x, int y, String str, int lessonTotal)
+	//constructor 
+	public CodeLesson(int x, int y, String str, int lessonTotal, Lesson h)
 	{
 		super(str); 
+		HomePage = h;
 		lessonContent = new Lesson[lessonTotal]; 
 		setLayout(new BorderLayout()); 
 		width = x; 
@@ -59,7 +67,6 @@ public class CodeLesson extends JFrame
 		mainContent.setLayout(new BoxLayout(mainContent, BoxLayout.X_AXIS));
 		
 		//footer
-		//footer.setBorder(new BorderFactory());
 		footer.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 10));
 			//buttons 
 			next.setBackground(lightPink);
@@ -76,18 +83,35 @@ public class CodeLesson extends JFrame
 		add(mainContent, BorderLayout.CENTER);
 		add(footer, BorderLayout.SOUTH);
 		
+		//set Homepage 
+		//setHome(); 
+		
 		//show
 		setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
-	void addLessonContent(Lesson lesssonToBeAdded, int lessonNum){
-		lessonContent[lessonNum] = new Lesson(lesssonToBeAdded);
+	//add lessons 
+	boolean addLessonContent(Lesson lesssonToBeAdded, int lessonNum){
+		if(lessonNum < lessonContent.length){
+			lessonContent[lessonNum] = new Lesson(lesssonToBeAdded);
+			hasLessonNum++;
+			return true; 
+		}
+		return false; 
 	}
 
+	/*void setHome(){
+		
+	}*/
 	public static void main(String[] args) 
 	{  
-		CodeLesson c = new CodeLesson(500, 500, "Hello World", 20);
+		// Lesson(String h, String main, String code, ImageIcon img[]); 
+		ImageIcon homeImag[] = new ImageIcon[1];
+		BufferedImage myPic = new ImageIO.read(new File("zmascot.png"));
+		homeImag[0] = new ImageIcon(myPicture);
+		Lesson homeview = new Lesson("Coding for Girls (CG)", "Let's start a new adventure", "", homeImag, homeImag.length); 
+		CodeLesson c = new CodeLesson(500, 500, "Hello World", 20, homeview);
 		
     }  
 }
